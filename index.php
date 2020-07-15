@@ -1,7 +1,7 @@
 <?php 
     	// Connect to database
-	$conn = mysqli_connect('localhost', 'Gudy', 'temitopeobi@24', 'email_capture');
-
+	$conn = mysqli_connect('eu-cdbr-west-03.cleardb.net', 'bfbcc486e9367e', 'b1f4951b', 'heroku_4f9d53a2e933baf');
+// mysql://bfbcc486e9367e:b1f4951b@eu-cdbr-west-03.cleardb.net/heroku_4f9d53a2e933baf?reconnect=true
 	//check connection
 
 	if(!$conn) {
@@ -10,6 +10,7 @@
 
     $email = "";
     $errors = array('email' => '');
+
 
     if (isset($_POST['submit'])) {
         	//check email
@@ -32,6 +33,7 @@
 
             if (mysqli_query($conn, $sql)) {
 				//success
+
 				header(('Location: index.php'));
 			} else {
 				//error
@@ -55,7 +57,7 @@
     <title>Email Capture</title>
 </head>
 <body>
-    <div class="container border border-warning">
+    <div class="container border border-warning mt-5 pt-4">
         <div class="jumbotron bg-dark text-muted">
             <h4 class="display-4">Hello</h4>
             <form action="index.php" method="POST" >
@@ -66,7 +68,7 @@
                         <div class="text-danger"><?php echo $errors['email']; ?></div>
                     </div>
                     <div class="form-group col-md-3">
-                        <button type="submit" class="btn btn-warning btn-lg">Notify Me!</button>
+                        <button type="submit" name="submit" value="submit" class="btn btn-warning btn-lg">Notify Me!</button>
                     </div>
                 </div>
             </form>
